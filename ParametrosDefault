@@ -1,0 +1,9 @@
+-subest 0.5
+-margenSeguridad 2.0
+-nPerturb 1
+-defFile default.txt
+-solInf 1E12
+-predictor 0
+-timeFormat %Y-%m-%d,%H:%M
+-greedyId 0
+-timeLimit 1

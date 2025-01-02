@@ -1,0 +1,80 @@
+Incendio 0
+Tiempo Apagado (h) 0.451389
+AreaQuemada  0.0229881
+Perimetro  38.0504
+PatrimonioUSD  206.892656
+PatrimonioUSD Salvado 2543.188188
+idRecurso	metroLinea	costoRecurso
+	612  79.745370 6.319444
+
+Incendio 1
+Tiempo Apagado (h) 0.520278
+AreaQuemada  0.001071
+Perimetro  8.817326
+PatrimonioUSD  9.638633
+PatrimonioUSD Salvado 101.516988
+idRecurso	metroLinea	costoRecurso
+	212  15.360185 2162.683889
+
+Incendio 2
+Tiempo Apagado (h) 1.036389
+AreaQuemada  0.014225
+Perimetro  45.355208
+PatrimonioUSD  128.029036
+PatrimonioUSD Salvado 613.173638
+idRecurso	metroLinea	costoRecurso
+	314  68.262037 3247.609444
+
+Incendio 3
+Tiempo Apagado (h) 1.037778
+AreaQuemada  0.213246
+Perimetro  175.721795
+PatrimonioUSD  1919.215713
+PatrimonioUSD Salvado 9176.892262
+idRecurso	metroLinea	costoRecurso
+	614  121.507407 20.128889
+	417  86.174074 2750.228889
+	613  53.785185 26.262222
+
+No se utiliza Recurso Id:
+	0
+	1
+	2
+	3
+	4
+	5
+	6
+	7
+	8
+	9
+	10
+	11
+	12
+	13
+	16
+	17
+	19
+	20
+	21
+	22
+	23
+	24
+	25
+	26
+	27
+	28
+	29
+	30
+	31
+	32
+	33
+	34
+	36
+	37
+	38
+	39
+	40
+	41
+	43
+	44
+	46

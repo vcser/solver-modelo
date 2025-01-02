@@ -1,0 +1,50 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+.ccls-cache
+.DS_Store
+.vscode/settings.json
+
+# ejecutable
+
+solver
+NN/.DS_Store
+NN/.DS_Store
+perf.data
+test.txt
+test2.txt
+Soluciones
+
+#directorio con resultados
+
+#Resultados/

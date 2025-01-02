@@ -1,0 +1,15 @@
+Incendio 0
+Tiempo Apagado (h) 3.17194
+AreaQuemada  55.8906
+Perimetro  4973.53
+PatrimonioUSD  59244.050327
+PatrimonioUSD Salvado 52821.059320
+idRecurso	metroLinea	costoRecurso
+	611  268.876852 93.010833
+	Z3  1180.108796 13334.854444
+	Z5  1180.108796 13334.854444
+	Z6  1180.108796 13334.854444
+	Z8  1165.386574 13334.854444
+
+No se utiliza Recurso Id:
+	5
