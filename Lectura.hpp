@@ -12,6 +12,7 @@
 #include <vector>
 #include <stdlib.h>
 #include <utility>
+#include <algorithm>
 /*
   TODO:
     -Rectificador de parametros
@@ -37,26 +38,31 @@ ID_RECURSO_N TIPO_RECURSO_N HORAS_DE_TRABAJO_RECURSO_N LATITUD_RECURSO_N LONGITU
 ---
 */
 
-int convertirTipoRecurso(const std::string &s)
-{
-  if (s == "HELITRANSPORTADA")
-    return 0;
-  else if (s == "TERRESTRE")
-    return 1;
-  else if (s == "CISTERNA")
-    return 2;
-  else if (s == "MECANIZADA")
-    return 3;
-  else if (s == "Interfaz")
-    return 4;
-  else if (s == "CHINOOK")
-    return 5;
-  else if (s == "CISTERNAAEREA")
-    return 6;
-  else if (s == "SINTIPO")
-    return 7;
-  else
-    return 7;
+int convertirTipoRecurso(std::string s) {
+    // Convertir la cadena a minúsculas
+    std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    // Comparar con valores en minúsculas
+    if (s == "helitransportada")
+        return 0;
+    else if (s == "terrestre")
+        return 1;
+    else if (s == "cisterna")
+        return 2;
+    else if (s == "mecanizada")
+        return 3;
+    else if (s == "interfaz")
+        return 4;
+    else if (s == "chinook")
+        return 5;
+    else if (s == "cisternaaerea")
+        return 6;
+    else if (s == "sintipo")
+        return 7;
+    else
+        return 7;
 }
 
 int convertirModeloCombustible(const std::string &s)

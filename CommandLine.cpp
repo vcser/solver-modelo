@@ -24,11 +24,11 @@ void Commandline::_parsePathToName(std::string to_parse,std::string &tag){
 }
 
 Commandline::Commandline(int argc, char* argv[]){
-	if (argc < 3){ //argc%2 != 0 || argc > 12
-		std::cout << "Línea de comandos incorrecta:  Número de argumentos introducidos " << argc <<std::endl ;
-		command_ok = false;
-		return ;
-	}
+	// if (argc < 3){ //argc%2 != 0 || argc > 12
+	// 	std::cout << "Línea de comandos incorrecta:  Número de argumentos introducidos " << argc <<std::endl ;
+	// 	command_ok = false;
+	// 	return ;
+	// }
 
 	//Defaults
 	verbose = 0;

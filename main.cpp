@@ -115,7 +115,7 @@ int main(int argc, char **argv)
 			// }
 
 			debugOut << " Despues de " << numIteraciones << " iteraciones, la solucion tiene " << "un fitness de " << solver.getFitness() << std::endl;
-			escrituraAsignaciones(std::cerr, solver, sol);
+			// escrituraAsignaciones(std::cerr, solver, sol);
 		}
 
 		// output

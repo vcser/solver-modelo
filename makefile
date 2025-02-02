@@ -29,7 +29,7 @@ OBJS2 = \
 
 
 $(TARGETDIR)/solver: $(OBJS2)
-	$(CCC)  $(CCFLAGS) -o $(TARGETDIR)/solver $(OBJS2)
+	$(CCC)  $(CCFLAGS) -o $(TARGETDIR)/solver $(OBJS2) $(LIBS)
 
 $(TARGETDIR)/keras_model.o: keras_model.h keras_model.cc
 	$(CCC) $(CCFLAGS) $(CPPFLAGS) -c keras_model.cc -o $(TARGETDIR)/keras_model.o
