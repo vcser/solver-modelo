@@ -16,7 +16,7 @@ time_t stringToEpoch(const std::string &timestamp)
   t.tm_min = m;
   t.tm_sec = static_cast<int>(s); // Redondear o truncar la parte decimal
 
-  printf("%d-%d-%dT%d:%d:%fZ\n", y, M, d, h, m, s);
+  // printf("%d-%d-%dT%d:%d:%fZ\n", y, M, d, h, m, s);
 
   // Asegurarse de que la conversión a epoch sea válida
   time_t epoch = timegm(&t);
@@ -26,8 +26,6 @@ time_t stringToEpoch(const std::string &timestamp)
     std::cerr << "Error: timegm() failed to convert time." << std::endl;
     return -1; // Retornar un valor de error si la conversión falla
   }
-
-  std::cout << "Conversion: " << timestamp << " -> " << epoch << std::endl;
 
   return epoch;
 }

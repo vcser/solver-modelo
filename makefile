@@ -5,7 +5,8 @@ CCFLAGS = -O3 -MMD -std=c++11 -g
 LIBS= -lm
 TARGETDIR=.
 CPPFLAGS += \
-         -I.
+         -I. \
+		 -Iinclude
 
 OBJS2 = \
 	$(TARGETDIR)/keras_model.o \

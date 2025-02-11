@@ -95,28 +95,28 @@ int main(int argc, char **argv)
 
 			sol->copy(*best);
 		}
-		else if (Parametros::get().getGreedyId() <= 2)
-		{
-			infoOut << " El fitness de la solucion inicial es " << solver.getFitness() << std::endl;
+		// else if (Parametros::get().getGreedyId() <= 2)
+		// {
+		// 	infoOut << " El fitness de la solucion inicial es " << solver.getFitness() << std::endl;
 
-			// Medicion 1
-			AnytimeRecorder::get().agregarMedicion(clock(), solver.getFitness());
+		// 	// Medicion 1
+		// 	AnytimeRecorder::get().agregarMedicion(clock(), solver.getFitness());
 
-			clock_t inicio = clock();
-			int numIteraciones = 0;
-			escrituraAsignaciones(std::cerr, solver, sol);
+		// 	clock_t inicio = clock();
+		// 	int numIteraciones = 0;
+		// 	// escrituraAsignaciones(std::cerr, solver, sol);
 
-			// while( (double)(clock()-inicio)/CLOCKS_PER_SEC<Parametros::get().getTimeLimit() ){
-			// 	if( !solver.pasoBusquedaLocal() ){
-			// 		//Si no se consigue mejorar, nos detenemos
-			// 		break;
-			// 	}
-			// 	numIteraciones++;
-			// }
+		// 	// while( (double)(clock()-inicio)/CLOCKS_PER_SEC<Parametros::get().getTimeLimit() ){
+		// 	// 	if( !solver.pasoBusquedaLocal() ){
+		// 	// 		//Si no se consigue mejorar, nos detenemos
+		// 	// 		break;
+		// 	// 	}
+		// 	// 	numIteraciones++;
+		// 	// }
 
-			debugOut << " Despues de " << numIteraciones << " iteraciones, la solucion tiene " << "un fitness de " << solver.getFitness() << std::endl;
-			// escrituraAsignaciones(std::cerr, solver, sol);
-		}
+		// 	debugOut << " Despues de " << numIteraciones << " iteraciones, la solucion tiene " << "un fitness de " << solver.getFitness() << std::endl;
+		// 	// escrituraAsignaciones(std::cerr, solver, sol);
+		// }
 
 		// output
 		if (!escrituraFinal(c.get_outputPath().c_str(), solver, sol))
@@ -124,9 +124,9 @@ int main(int argc, char **argv)
 
 		delete sol;
 		infoOut << "The program has finished" << std::endl;
-		std::ofstream anytimeSteps("salidaAnytime.txt");
-		AnytimeRecorder::get().imprimirEnStream(anytimeSteps);
-		anytimeSteps.close();
+		// std::ofstream anytimeSteps("salidaAnytime.txt");
+		// AnytimeRecorder::get().imprimirEnStream(anytimeSteps);
+		// anytimeSteps.close();
 	}
 	catch (const std::string &e)
 	{

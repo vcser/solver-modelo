@@ -1,94 +1,114 @@
-
 #include <vector>
-#include <ostream>
+#include <fstream>
+#include <nlohmann/json.hpp>
 #include "Managers.hpp"
 #include "Solver.hpp"
 #include "Escritura.hpp"
 #include "Logging.hpp"
 #include "Parsing.hpp"
 
-bool escrituraFinal(const std::string &outputFile, Solver &solver, Solucion *sol)
-{
-	std::ofstream file;
-	file.open(outputFile.c_str());
-	if (!file.is_open())
-		return false;
+using json = nlohmann::json;
 
-	escrituraAsignaciones(file, solver, sol);
+bool escrituraFinal(const std::string& outputFile, Solver &solver, Solucion *sol) {
+    json outputData;
 
-	file.close();
+    std::ofstream file(outputFile.c_str());
+    if (!file) {
+        std::cerr << "Error creando el archivo de salida" << std::endl;
+        return false;
+    }
 
-	return true;
+    // Verificar si los objetos de entrada son válidos antes de escribir
+    if (sol == nullptr) {
+        std::cerr << "Datos no válidos para la escritura." << std::endl;
+        return false;
+    }
+
+    escrituraAsignaciones(outputData, solver, sol);
+
+    // Volcar los datos en el archivo JSON
+    file << outputData.dump(2);
+
+    return true;
 }
 
-void escrituraAsignaciones(std::ostream &outputStream, Solver &solver, Solucion *solucion)
-{
-	ManagerEstructuras &manager = ManagerEstructuras::get();
-	HolderRecursos &hRecursos = manager.getHolderRecursos();
-	HolderIncendios &hIncendios = manager.getHolderIncendios();
+void escrituraAsignaciones(json &output, Solver &solver, Solucion *solucion) {
+    ManagerEstructuras &manager = ManagerEstructuras::get();
+    HolderRecursos &hRecursos = manager.getHolderRecursos();
+    HolderIncendios &hIncendios = manager.getHolderIncendios();
 
-	tablaCostosRecursos &costosRecursos = tablaCostosRecursos::get();
-	matrizETA &etas = matrizETA::get();
+    tablaCostosRecursos &costosRecursos = tablaCostosRecursos::get();
+    matrizETA &etas = matrizETA::get();
 
-	int nRecursos = hRecursos.getNumRecursos();
-	int nIncendios = hIncendios.getNumIncendios();
+    int nRecursos = hRecursos.getNumRecursos();
+    int nIncendios = hIncendios.getNumIncendios();
 
-	time_t actual = Parametros::get().getTimeStamp();
+    time_t actual = Parametros::get().getTimeStamp();
 
-	for (int idIncendio = 0; idIncendio < nIncendios; idIncendio++)
-	{
-		outputStream << "Incendio " << idIncendio << "\n";
-		Incendio &incendio = hIncendios.getIncendio(idIncendio);
-		infoOut << "Incendio " << idIncendio << " timestamp inicio \t" << epochToString(incendio.getTimestampInicio()) << std::endl;
+    output["fires"] = json::array();
 
-		std::vector<int> idRecursosAsignados;
-		for (int idRecurso = 0; idRecurso < nRecursos; idRecurso++)
-		{
-			if (solucion->asignadoAIncendio(idRecurso) == idIncendio)
-				idRecursosAsignados.push_back(idRecurso);
-		}
+    for (int idIncendio = 0; idIncendio < nIncendios; idIncendio++) {
+        json incendio_json;
+        incendio_json["id"] = idIncendio;
+        Incendio &incendio = hIncendios.getIncendio(idIncendio);
+        infoOut << "Incendio " << idIncendio << " timestamp inicio \t" << epochToString(incendio.getTimestampInicio()) << std::endl;
 
-		time_t tiempoApagado = solver.apagaIncendio(idRecursosAsignados, incendio);
+        std::vector<int> idRecursosAsignados;
+        for (int idRecurso = 0; idRecurso < nRecursos; idRecurso++) {
+            if (solucion->asignadoAIncendio(idRecurso) == idIncendio)
+                idRecursosAsignados.push_back(idRecurso);
+        }
 
-		double horasDeCombate = 0.0;
-		if (tiempoApagado == std::numeric_limits<time_t>::max())
-		{
-			infoOut << "Incendio " << idIncendio << " no pudo ser apagado.\n";
-			outputStream << "Tiempo Apagado (h) INDETERMINADO\n";
-			outputStream << "Datos de daño y costos no disponibles.\n";
-		}
-		else
-		{
-			infoOut << "Incendio " << idIncendio << " timestamp apagado \t" << epochToString(tiempoApagado) << std::endl;
+        time_t tiempoApagado = solver.apagaIncendio(idRecursosAsignados, incendio);
 
-			int segundosCombate = tiempoApagado - actual;
-			horasDeCombate = static_cast<double>(segundosCombate) / 3600.0;
-			outputStream << "Tiempo Apagado (h) " << horasDeCombate << "\n";
-			outputStream << "AreaQuemada  " << solver.consultarArea(incendio, horasDeCombate).getArea() << "\n";
-			outputStream << "Perimetro  " << solver.consultarPerimetro(incendio, horasDeCombate).getPerimetro() << "\n";
-			outputStream << "PatrimonioUSD  " << std::fixed << solver.consultarCosto(incendio, horasDeCombate) << "\n";
-			outputStream << "PatrimonioUSD Salvado " << std::fixed << solver.consultarCosto(incendio, 6 - horasDeCombate) << "\n";
-		}
+        double horasDeCombate = 0.0;
+        if (tiempoApagado == std::numeric_limits<time_t>::max()) {
+            infoOut << "Incendio " << idIncendio << " no pudo ser apagado.\n";
+            incendio_json["metrics"] = {
+                {"extinguishedTime", nullptr},  // Usando nullptr en vez de NAN
+                {"area", nullptr},
+                {"perimeter", nullptr},
+                {"damage", nullptr},
+                {"savedDamage", nullptr}
+            };
+        } else {
+            infoOut << "Incendio " << idIncendio << " timestamp apagado \t" << epochToString(tiempoApagado) << std::endl;
 
-		outputStream << "idRecurso\tmetroLinea\tcostoRecurso\n";
-		for (auto &idRecurso : idRecursosAsignados)
-		{
-			Recurso &recurso = hRecursos.getRecurso(idRecurso);
-			double metroLinea = solver.metrosDeLinea(recurso, incendio, tiempoApagado);
-			time_t recursoETA = etas.getETA(recurso, incendio);
-			int segundosETA = (actual < recursoETA) ? recursoETA - actual : 0;
-			double horasETA = segundosETA / 3600.0;
-			double costoRecurso = horasETA * costosRecursos.getCostoTransporte(recurso.getTipo()) + (horasETA > 0 ? (horasETA - horasDeCombate) : 0) * costosRecursos.getCostoUso(recurso.getTipo());
+            int segundosCombate = tiempoApagado - actual;
+            horasDeCombate = static_cast<double>(segundosCombate) / 3600.0;
+            incendio_json["metrics"] = {
+                {"extinguishedTime", horasDeCombate},
+                {"area", solver.consultarArea(incendio, horasDeCombate).getArea()},
+                {"perimeter", solver.consultarPerimetro(incendio, horasDeCombate).getPerimetro()},
+                {"damage", solver.consultarCosto(incendio, horasDeCombate)},
+                {"savedDamage", solver.consultarCosto(incendio, 6 - horasDeCombate)}
+            };
+        }
 
-			outputStream << "\t" << hRecursos.buscarIdentificador(idRecurso) << "  " << metroLinea << " " << costoRecurso << "\n";
-		}
-		outputStream << "\n";
-	}
+        // Recursos asignados al incendio
+        incendio_json["resources"] = json::array();
+        for (auto &idRecurso : idRecursosAsignados) {
+            Recurso &recurso = hRecursos.getRecurso(idRecurso);
+            double metroLinea = solver.metrosDeLinea(recurso, incendio, tiempoApagado);
+            time_t recursoETA = etas.getETA(recurso, incendio);
+            int segundosETA = (actual < recursoETA) ? recursoETA - actual : 0;
+            double horasETA = segundosETA / 3600.0;
+            double costoRecurso = horasETA * costosRecursos.getCostoTransporte(recurso.getTipo()) + (horasETA > 0 ? (horasETA - horasDeCombate) : 0) * costosRecursos.getCostoUso(recurso.getTipo());
 
-	outputStream << "No se utiliza Recurso Id:\n";
-	for (int recurso = 0; recurso < nRecursos; recurso++)
-	{
-		if (solucion->asignadoAIncendio(recurso) == -1)
-			outputStream << "\t" << hRecursos.buscarIdentificador(recurso) << "\n";
-	}
+            json recurso_json;
+            recurso_json["id"] = hRecursos.buscarIdentificador(idRecurso);
+            recurso_json["line"] = metroLinea;
+            recurso_json["cost"] = costoRecurso;
+            incendio_json["resources"].push_back(recurso_json);
+        }
+
+        output["fires"].push_back(incendio_json);
+    }
+
+    // Recursos no utilizados
+    output["notUsed"] = json::array();
+    for (int recurso = 0; recurso < nRecursos; recurso++) {
+        if (solucion->asignadoAIncendio(recurso) == -1)
+            output["notUsed"].push_back(hRecursos.buscarIdentificador(recurso));
+    }
 }

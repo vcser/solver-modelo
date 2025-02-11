@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include <utility>
 #include <algorithm>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 /*
   TODO:
     -Rectificador de parametros
@@ -38,31 +41,31 @@ ID_RECURSO_N TIPO_RECURSO_N HORAS_DE_TRABAJO_RECURSO_N LATITUD_RECURSO_N LONGITU
 ---
 */
 
-int convertirTipoRecurso(std::string s) {
-    // Convertir la cadena a minúsculas
-    std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) {
-        return std::tolower(c);
-    });
+int convertirTipoRecurso(std::string s)
+{
+  // Convertir la cadena a minúsculas
+  std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c)
+                 { return std::tolower(c); });
 
-    // Comparar con valores en minúsculas
-    if (s == "helitransportada")
-        return 0;
-    else if (s == "terrestre")
-        return 1;
-    else if (s == "cisterna")
-        return 2;
-    else if (s == "mecanizada")
-        return 3;
-    else if (s == "interfaz")
-        return 4;
-    else if (s == "chinook")
-        return 5;
-    else if (s == "cisternaaerea")
-        return 6;
-    else if (s == "sintipo")
-        return 7;
-    else
-        return 7;
+  // Comparar con valores en minúsculas
+  if (s == "helitransportada")
+    return 0;
+  else if (s == "terrestre")
+    return 1;
+  else if (s == "cisterna")
+    return 2;
+  else if (s == "mecanizada")
+    return 3;
+  else if (s == "interfaz")
+    return 4;
+  else if (s == "chinook")
+    return 5;
+  else if (s == "cisternaaerea")
+    return 6;
+  else if (s == "sintipo")
+    return 7;
+  else
+    return 7;
 }
 
 int convertirModeloCombustible(const std::string &s)
@@ -138,15 +141,19 @@ int convertirModeloCombustible(const std::string &s)
 bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, HolderIncendios &hIncendios,
                     HolderCiudadesCercanas &hCiudades, int verbose)
 {
-  int numIncendios;
-  int numRecursos;
-  std::string timestamp;
+  json inputData = json::parse(inputStream);
+  std::cout << "datdos cargados: " << inputData.dump() << std::endl;
+  std::cout.flush();
+
+  int numIncendios = inputData["fires"].size();
+  int numRecursos = inputData["resources"].size();
+  std::string timestamp = inputData["timestamp"];
 
   infoOut << "Cargando Datos de incendio..." << std::endl;
   matrizETA &etas = matrizETA::get();
   std::vector<Incendio *> refIncendios;
-  inputStream >> timestamp;
-  inputStream >> numIncendios;
+  // inputStream >> timestamp;
+  // inputStream >> numIncendios;
 
   time_t actual = stringToEpoch(timestamp);
   Parametros::get().setTimeStamp(actual);
@@ -157,23 +164,23 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
   // Lectura de Incendios!
   for (int i = 0; i < numIncendios; i++)
   {
-    double latitud, longitud;
-    double humedad;
-    double rapidezViento;
-    double direccionViento;
-    double temperatura;
-    double pendiente;
-    double factorVPL;
-    double valorRodalXHectarea;
-    double distanciaCiudad;
-    double metrosDeLineaArmados;
-    time_t timeStampInicio;
-    std::string modeloCombustible;
+    double latitud = inputData["fires"][i]["lat"], longitud = inputData["fires"][i]["lon"];
+    double humedad = inputData["fires"][i]["humidity"];
+    double rapidezViento = inputData["fires"][i]["windSpeed"];
+    double direccionViento = inputData["fires"][i]["windDirection"];
+    double temperatura = inputData["fires"][i]["temperature"];
+    double pendiente = inputData["fires"][i]["slope"];
+    double factorVPL = inputData["fires"][i]["vplFactor"];
+    double valorRodalXHectarea = inputData["fires"][i]["rodalValue"];
+    double distanciaCiudad = inputData["fires"][i]["cityDistanceMeters"];
+    double metrosDeLineaArmados = inputData["fires"][i]["builtLineLength"];
+    time_t timeStampInicio = stringToEpoch(inputData["fires"][i]["timestamp"]);
+    std::string modeloCombustible = inputData["fires"][i]["fuelModel"];
     int modCombustibleId;
 
-    inputStream >> latitud >> longitud >> humedad >> rapidezViento >> direccionViento >> temperatura >> pendiente >> factorVPL >> timestamp >> valorRodalXHectarea >> modeloCombustible >> distanciaCiudad >> metrosDeLineaArmados;
+    // inputStream >> latitud >> longitud >> humedad >> rapidezViento >> direccionViento >> temperatura >> pendiente >> factorVPL >> timestamp >> valorRodalXHectarea >> modeloCombustible >> distanciaCiudad >> metrosDeLineaArmados;
 
-    timeStampInicio = stringToEpoch(timestamp);
+    // timeStampInicio = stringToEpoch(timestamp);
     modCombustibleId = convertirModeloCombustible(modeloCombustible);
 
     Incendio in(latitud, longitud, humedad, rapidezViento, direccionViento, temperatura, pendiente,
@@ -189,7 +196,7 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
     hCiudades.agregarIncendioYCiudad(*refIncendios[refIncendios.size() - 1], distanciaCiudad);
   }
 
-  inputStream >> numRecursos;
+  // inputStream >> numRecursos;
   infoOut << "Número de Recursos: " << numRecursos << std::endl;
   infoOut << "id\ttipo\thorasDeTrabajo\tlatitud\tlongitud\testado\tidAsignado\testaAgrupado\tETAs" << std::endl;
 
@@ -200,18 +207,18 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
 
   for (int i = 0; i < numRecursos; i++)
   {
-    std::string id;
-    std::string tipo;
-    double horasDeTrabajo;
-    double latitud, longitud;
-    int estado;
-    bool estaAgrupado;
-    int idAsignado;
+    std::string id = std::string(inputData["resources"][i]["id"]);
+    std::string tipo = inputData["resources"][i]["type"];
+    double horasDeTrabajo = inputData["resources"][i]["workedHours"];
+    double latitud = inputData["resources"][i]["lat"], longitud = inputData["resources"][i]["lon"];
+    int estado = inputData["resources"][i]["state"];
+    bool estaAgrupado = inputData["resources"][i]["isGrouped"];
+    int idAsignado = inputData["resources"][i]["assignedFire"];
     std::string eta;
     int tipoR;
 
-    inputStream >> id >> tipo >> horasDeTrabajo >> latitud >> longitud >>
-        estado >> idAsignado >> estaAgrupado;
+    // inputStream >> id >> tipo >> horasDeTrabajo >> latitud >> longitud >>
+    //     estado >> idAsignado >> estaAgrupado;
 
     // // Si no esta activo el Recurso, no se considera para el solver
     // if (estado==0) {
@@ -234,7 +241,8 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
 
     for (int j = 0; j < numIncendios; j++)
     {
-      inputStream >> eta;
+      // inputStream >> eta;
+      eta = inputData["resources"][i]["fireETAs"][j];
       infoOutN << eta << " ";
       time_t etaTimestamp = stringToEpoch(eta);
       etas.setETA(res, hIncendios.getIncendio(j), etaTimestamp);
@@ -256,7 +264,8 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
     for (int j = 0; j < sinTipo; j++)
     {
       double rendimiento;
-      inputStream >> rendimiento;
+      // inputStream >> rendimiento;
+      rendimiento = inputData["performanceMatrix"][i-1][j];
       infoOut << "Lei rendimiento " << rendimiento << std::endl;
       localMapTablaRendimiento[std::make_pair(j, i)] = rendimiento;
     }
@@ -265,10 +274,12 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
 
   // Lectura de gastos de Recursos por tipo
   std::map<int, std::pair<double, double>> localMapTablaCostos;
+  std::string _tiposRecursos[] = {"Helitransportada", "Terrestre", "Cisterna", "Mecanizada", "Interfaz", "Chinook", "CisternaAerea"};
   for (int i = 0; i < sinTipo; i++)
   {
-    double costoTransporte, costoUso;
-    inputStream >> costoTransporte >> costoUso;
+    // inputStream >> costoTransporte >> costoUso;
+    double costoTransporte = inputData["resourceCosts"][_tiposRecursos[i]]["transportUSD"];
+    double costoUso = inputData["resourceCosts"][_tiposRecursos[i]]["hourUSD"];
     infoOut << "Lei costo transporte " << costoTransporte << " y costo de uso " << costoUso << std::endl;
     localMapTablaCostos[i] = std::make_pair(costoTransporte, costoUso);
   }
@@ -283,34 +294,39 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
   // Obtenido del enum
   int numeroTiposRecurso = sinTipo;
   std::vector<std::vector<bool>> compatRR(numeroTiposRecurso + 1,
-                                          std::vector<bool>(numeroTiposRecurso + 1, 0));
+                                          std::vector<bool>(numeroTiposRecurso + 1, true));
 
-  for (int i = 0; i < numeroTiposRecurso; i++)
-  {
-    for (int j = 0; j < numeroTiposRecurso; j++)
-    {
-      // bool leer;
-      // inputStream >> leer;
-      compatRR[i][j] = true;
-    }
-  }
+  // for (int i = 0; i < numeroTiposRecurso; i++)
+  // {
+  //   for (int j = 0; j < numeroTiposRecurso; j++)
+  //   {
+  //     // bool leer;
+  //     // inputStream >> leer;
+  //     compatRR[i][j] = true;
+  //   }
+  // }
 
   tablaIncompatibilidad.setMatrizRecursoRecurso(compatRR);
 
   std::vector<std::vector<bool>> compatRI(numIncendios + 1,
-                                          std::vector<bool>(numRecursos + 1, 0));
+                                          std::vector<bool>(numRecursos + 1, true));
   infoOut << "Compatibilidades Recurso<->Incendio" << std::endl;
   infoOut << "idIncendio\tidRecurso\t" << std::endl;
   for (int i = 0; i < numIncendios; i++)
   {
-    for (int j = 0; j < numRecursos; j++)
+    // for (int j = 0; j < numRecursos; j++)
+    // {
+    //   bool leer;
+    //   int idIncendio;
+    //   std::string idRecurso;
+    //   inputStream >> idRecurso >> idIncendio >> leer;
+    //   infoOut << idIncendio - 1 << "\t" << hRecursos.buscarIdentificadorInv(idRecurso) << "\t" << leer << std::endl;
+    //   compatRI[idIncendio - 1][hRecursos.buscarIdentificadorInv(idRecurso)] = true;
+    // }
+    for (int j = 0; j < inputData["fires"][i]["incompatibilities"].size(); j++)
     {
-      bool leer;
-      int idIncendio;
-      std::string idRecurso;
-      inputStream >> idRecurso >> idIncendio >> leer;
-      infoOut << idIncendio - 1 << "\t" << hRecursos.buscarIdentificadorInv(idRecurso) << "\t" << leer << std::endl;
-      compatRI[idIncendio - 1][hRecursos.buscarIdentificadorInv(idRecurso)] = true;
+      int idRecurso = inputData["fires"][i]["resourceCompatibilities"][j];
+      compatRI[i][idRecurso] = false;
     }
   }
 
