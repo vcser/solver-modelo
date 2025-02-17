@@ -142,8 +142,8 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
                     HolderCiudadesCercanas &hCiudades, int verbose)
 {
   json inputData = json::parse(inputStream);
-  std::cout << "datdos cargados: " << inputData.dump() << std::endl;
-  std::cout.flush();
+  // std::cout << "datdos cargados: " << inputData.dump() << std::endl;
+  // std::cout.flush();
 
   int numIncendios = inputData["fires"].size();
   int numRecursos = inputData["resources"].size();
@@ -159,7 +159,7 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
   Parametros::get().setTimeStamp(actual);
 
   infoOut << "Número de incendios: " << numIncendios << std::endl
-          << "latitud  longitud  humedad  rapidezViento  direccionViento  temperatura  pendiente  factorVPL  timestampInicio  valorRodalXHectarea  distanciaCiudad" << std::endl;
+          << "latitud  longitud  humedad  rapidezViento  direccionViento  temperatura  pendiente  factorVPL  timestampInicio  valorRodalXHectarea modeloCombustible  distanciaCiudad" << std::endl;
 
   // Lectura de Incendios!
   for (int i = 0; i < numIncendios; i++)
@@ -243,7 +243,7 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
     {
       // inputStream >> eta;
       eta = inputData["resources"][i]["fireETAs"][j];
-      infoOutN << eta << " ";
+      infoOutN << eta << std::endl;
       time_t etaTimestamp = stringToEpoch(eta);
       etas.setETA(res, hIncendios.getIncendio(j), etaTimestamp);
     }
@@ -325,10 +325,21 @@ bool lecturaInicial(std::istream &inputStream, HolderRecursos &hRecursos, Holder
     // }
     for (int j = 0; j < inputData["fires"][i]["incompatibilities"].size(); j++)
     {
-      int idRecurso = inputData["fires"][i]["resourceCompatibilities"][j];
-      compatRI[i][idRecurso] = false;
+      std::string idRecurso = inputData["fires"][i]["resourceCompatibilities"][j];
+      compatRI[i][hRecursos.buscarIdentificadorInv(idRecurso)] = false;
     }
   }
+
+  /// DEBUG
+  // for (int i = 0; i < numIncendios; i++)
+  // {
+  //   for (int j = 0; j < numRecursos; j++)
+  //   {
+  //     bool leer = compatRI[i][j];
+  //     infoOut << i << "\t" << hRecursos.buscarIdentificador(j) << "\t" << leer << std::endl;
+  //   }
+  // }
+  ///////
 
   tablaIncompatibilidad.setMatrizRecursoIncendio(compatRI);
 

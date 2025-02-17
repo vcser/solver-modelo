@@ -40,7 +40,7 @@ Commandline::Commandline(int argc, char* argv[]){
 	// Comente esto, porque ahora los Parametros se pueden modificar por argumento al llamar el solver
 	// if(argc < 11){
 		// Se cargado por medio de lectura de archivo
-		std::cout << "Carga desde archivo... " <<std::endl ;
+		// std::cout << "Carga desde archivo... " <<std::endl ;
 		for ( int i = 1 ; i < argc ; i += 2 ){
 			if ( std::string(argv[i]) == "-i" ){
 				input_path = std::string(argv[i+1]);

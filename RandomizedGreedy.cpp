@@ -258,7 +258,7 @@ void RandomizedGreedy::solve()
       if (apagado <= tObjetivo)
       {
         // ta bien, sacamos los recursos de la lista de disponibles
-        infoOut << "Esta asignacion apaga el incendio " << actual.getId() << std::endl;
+        // infoOut << "Esta asignacion apaga el incendio " << actual.getId() << std::endl;
 
         std::sort(idsAsignados.begin(), idsAsignados.end());
         debugOut << "idsAsignados: " << std::endl;
@@ -306,8 +306,8 @@ void RandomizedGreedy::solve()
     else
     {
       // borrar incendio actual del vector
-      infoOut << "El incendio " << actual.getId() << " se pudo apagar con la asignacion con t=" << apagado << std::endl;
-      infoOut << apagado - actual.getTimestampInicio() << " segundos desde el inicio" << std::endl;
+      // infoOut << "El incendio " << actual.getId() << " se pudo apagar con la asignacion con t=" << apagado << std::endl;
+      // infoOut << apagado - actual.getTimestampInicio() << " segundos desde el inicio" << std::endl;
       for (int i = 0; i < vectorIncendios.size(); i++)
       {
         if (vectorIncendios[i].second.getId() == actual.getId())

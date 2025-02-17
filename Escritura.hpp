@@ -9,7 +9,7 @@
 
 using json = nlohmann::json;
 
-bool escrituraFinal(const std::string &outputFile, Solver &solver, Solucion *sol);
+bool escrituraFinal(std::ostream &outputStream, Solver &solver, Solucion *sol);
 void escrituraAsignaciones(json &output, Solver &solver, Solucion *solucion);
 
 #endif

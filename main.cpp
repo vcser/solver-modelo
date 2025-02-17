@@ -119,7 +119,7 @@ int main(int argc, char **argv)
 		// }
 
 		// output
-		if (!escrituraFinal(c.get_outputPath().c_str(), solver, sol))
+		if (!escrituraFinal(std::cout, solver, sol))
 			throw std::string("Error al crear archivo de salida.");
 
 		delete sol;

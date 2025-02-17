@@ -9,14 +9,14 @@
 
 using json = nlohmann::json;
 
-bool escrituraFinal(const std::string& outputFile, Solver &solver, Solucion *sol) {
+bool escrituraFinal(std::ostream &outputStream, Solver &solver, Solucion *sol) {
     json outputData;
 
-    std::ofstream file(outputFile.c_str());
-    if (!file) {
-        std::cerr << "Error creando el archivo de salida" << std::endl;
-        return false;
-    }
+    // std::ofstream file(outputFile.c_str());
+    // if (!file) {
+    //     std::cerr << "Error creando el archivo de salida" << std::endl;
+    //     return false;
+    // }
 
     // Verificar si los objetos de entrada son válidos antes de escribir
     if (sol == nullptr) {
@@ -27,7 +27,7 @@ bool escrituraFinal(const std::string& outputFile, Solver &solver, Solucion *sol
     escrituraAsignaciones(outputData, solver, sol);
 
     // Volcar los datos en el archivo JSON
-    file << outputData.dump(2);
+    outputStream << outputData.dump(2);
 
     return true;
 }
@@ -65,11 +65,11 @@ void escrituraAsignaciones(json &output, Solver &solver, Solucion *solucion) {
         if (tiempoApagado == std::numeric_limits<time_t>::max()) {
             infoOut << "Incendio " << idIncendio << " no pudo ser apagado.\n";
             incendio_json["metrics"] = {
-                {"extinguishedTime", nullptr},  // Usando nullptr en vez de NAN
-                {"area", nullptr},
-                {"perimeter", nullptr},
-                {"damage", nullptr},
-                {"savedDamage", nullptr}
+                {"extinguishedTime", 0},
+                {"area", 0},
+                {"perimeter", 0},
+                {"damage", 0},
+                {"savedDamage", 0}
             };
         } else {
             infoOut << "Incendio " << idIncendio << " timestamp apagado \t" << epochToString(tiempoApagado) << std::endl;
