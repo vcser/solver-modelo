@@ -1,0 +1,31 @@
+{
+    "costo": {
+        "uso": {
+            "helitransportada": 14,
+            "tipo 1": 14,
+            "tipo 2": 14,
+            "mecanizada": 80,
+            "avion cisterna": 4000,
+            "helicoptero mediano": 4000,
+            "helicoptero grande": 4000
+        },
+        "transporte": {
+            "helitransportada": 4000,
+            "tipo 1": 35,
+            "tipo 2": 35,
+            "mecanizada": 100,
+            "avion cisterna": 4000,
+            "helicoptero mediano": 4000,
+            "helicoptero grande": 4000
+        }
+    },
+    "velocidadPromedio": {
+        "helitrasportada": 180,
+        "tipo 1": 60,
+        "tipo 2": 60,
+        "mecanizada": 50,
+        "avion cisterna": 290,
+        "helicoptero mediano": 180,
+        "helicoptero grande": 260
+    }
+}

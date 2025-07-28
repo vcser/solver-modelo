@@ -1,0 +1,632 @@
+[
+    {
+        "id": "BHM212",
+        "tipo": "helitransportada",
+        "lat": -35.62361387,
+        "lon": -71.98088225,
+        "costoTransporte": 4000,
+        "costoUso": 14,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "BHM314",
+        "tipo": "helitransportada",
+        "lat": -37.39226036,
+        "lon": -72.42342975,
+        "costoTransporte": 4000,
+        "costoUso": 14,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "BHM318",
+        "tipo": "helitransportada",
+        "lat": -37.51370106,
+        "lon": -72.62504169,
+        "costoTransporte": 4000,
+        "costoUso": 14,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "BHM412",
+        "tipo": "helitransportada",
+        "lat": -37.13861712,
+        "lon": -72.41367109,
+        "costoTransporte": 4000,
+        "costoUso": 14,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "BHM417",
+        "tipo": "helitransportada",
+        "lat": -37.133611,
+        "lon": -72.932778,
+        "costoTransporte": 4000,
+        "costoUso": 14,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "BHM512",
+        "tipo": "helitransportada",
+        "lat": -37.75927668,
+        "lon": -72.63041181,
+        "costoTransporte": 4000,
+        "costoUso": 14,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "BHM612",
+        "tipo": "helitransportada",
+        "lat": -37.94038266,
+        "lon": -72.41824345,
+        "costoTransporte": 4000,
+        "costoUso": 14,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "BM213",
+        "tipo": "tipo 1",
+        "lat": -35.39167367,
+        "lon": -71.80555987,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM214",
+        "tipo": "tipo 1",
+        "lat": -35.59123935,
+        "lon": -72.27852037,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM312",
+        "tipo": "tipo 1",
+        "lat": -36.90584595,
+        "lon": -73.05658854,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM315",
+        "tipo": "tipo 1",
+        "lat": -37.52340409,
+        "lon": -72.6928103,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM316",
+        "tipo": "tipo 1",
+        "lat": -37.75971462,
+        "lon": -72.62976373,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM3110",
+        "tipo": "tipo 1",
+        "lat": -37.40389014,
+        "lon": -72.61230194,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM414",
+        "tipo": "tipo 1",
+        "lat": -37.16636455,
+        "lon": -72.07229829,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM415",
+        "tipo": "tipo 1",
+        "lat": -37.16289068,
+        "lon": -72.90696647,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM416",
+        "tipo": "tipo 1",
+        "lat": -37.40389014,
+        "lon": -72.61230194,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM513",
+        "tipo": "tipo 1",
+        "lat": -37.78687917,
+        "lon": -72.47044807,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM514",
+        "tipo": "tipo 1",
+        "lat": -37.98290556,
+        "lon": -72.82909499,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM515",
+        "tipo": "tipo 1",
+        "lat": -37.97966734,
+        "lon": -72.83670208,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM517",
+        "tipo": "tipo 1",
+        "lat": -37.75976473,
+        "lon": -72.62964764,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM6111",
+        "tipo": "tipo 1",
+        "lat": -37.73000638,
+        "lon": -72.26524131,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM613",
+        "tipo": "tipo 1",
+        "lat": -37.72992792,
+        "lon": -72.26509308,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM614",
+        "tipo": "tipo 1",
+        "lat": -37.94199615,
+        "lon": -72.41946717,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM615",
+        "tipo": "tipo 1",
+        "lat": -38.27992661,
+        "lon": -72.40470071,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM616",
+        "tipo": "tipo 1",
+        "lat": -37.94199615,
+        "lon": -72.41946717,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM713",
+        "tipo": "tipo 1",
+        "lat": -38.7510565,
+        "lon": -72.94336698,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM714",
+        "tipo": "tipo 1",
+        "lat": -38.20356074,
+        "lon": -72.9982466,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM715",
+        "tipo": "tipo 1",
+        "lat": -38.20356783,
+        "lon": -72.99831618,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM211",
+        "tipo": "tipo 2",
+        "lat": -35.62354581,
+        "lon": -71.98062424,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM215",
+        "tipo": "tipo 2",
+        "lat": -35.59123935,
+        "lon": -72.27852037,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM311",
+        "tipo": "tipo 2",
+        "lat": -37.51347194,
+        "lon": -72.62602489,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM411",
+        "tipo": "tipo 2",
+        "lat": -37.13783855,
+        "lon": -72.41348145,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM413",
+        "tipo": "tipo 2",
+        "lat": -37.171461,
+        "lon": -72.543259,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM511",
+        "tipo": "tipo 2",
+        "lat": -37.75971462,
+        "lon": -72.62976373,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM516",
+        "tipo": "tipo 2",
+        "lat": -37.98112967,
+        "lon": -72.8327113,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "BM518",
+        "tipo": "tipo 2",
+        "lat": -37.793647,
+        "lon": -72.738337,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM611",
+        "tipo": "tipo 2",
+        "lat": -37.94185167,
+        "lon": -72.41937751,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM711",
+        "tipo": "tipo 2",
+        "lat": -38.75109745,
+        "lon": -72.9433855,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM3111",
+        "tipo": "tipo 2",
+        "lat": -37.39238058,
+        "lon": -72.42289448,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM4111",
+        "tipo": "tipo 2",
+        "lat": -37.16205967,
+        "lon": -72.90927337,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM5111",
+        "tipo": "tipo 2",
+        "lat": -37.78687917,
+        "lon": -72.47044807,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "CM7111",
+        "tipo": "tipo 2",
+        "lat": -38.20361603,
+        "lon": -72.99826004,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    },
+    {
+        "id": "SM219",
+        "tipo": "mecanizada",
+        "lat": -35.62348286,
+        "lon": -71.98068147,
+        "costoTransporte": 100,
+        "costoUso": 80,
+        "velocidadPromedio": 50
+    },
+    {
+        "id": "SM319",
+        "tipo": "mecanizada",
+        "lat": -37.4038674,
+        "lon": -72.61234457,
+        "costoTransporte": 100,
+        "costoUso": 80,
+        "velocidadPromedio": 50
+    },
+    {
+        "id": "SM419",
+        "tipo": "mecanizada",
+        "lat": -37.13787802,
+        "lon": -72.41352091,
+        "costoTransporte": 100,
+        "costoUso": 80,
+        "velocidadPromedio": 50
+    },
+    {
+        "id": "SM519",
+        "tipo": "mecanizada",
+        "lat": -37.75970622,
+        "lon": -72.62969354,
+        "costoTransporte": 100,
+        "costoUso": 80,
+        "velocidadPromedio": 50
+    },
+    {
+        "id": "SM619",
+        "tipo": "mecanizada",
+        "lat": -37.94184708,
+        "lon": -72.41951028,
+        "costoTransporte": 100,
+        "costoUso": 80,
+        "velocidadPromedio": 50
+    },
+    {
+        "id": "SM6110",
+        "tipo": "mecanizada",
+        "lat": -37.72979718,
+        "lon": -72.26527734,
+        "costoTransporte": 100,
+        "costoUso": 80,
+        "velocidadPromedio": 50
+    },
+    {
+        "id": "AM1",
+        "tipo": "avion cisterna",
+        "lat": -35.37910698,
+        "lon": -71.60329923,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM2",
+        "tipo": "avion cisterna",
+        "lat": -35.87640234,
+        "lon": -72.32643251,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM3",
+        "tipo": "avion cisterna",
+        "lat": -37.12883877,
+        "lon": -72.41303096,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM4",
+        "tipo": "avion cisterna",
+        "lat": -37.12890735,
+        "lon": -72.41255926,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM5",
+        "tipo": "avion cisterna",
+        "lat": -37.12852999,
+        "lon": -72.41274661,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM6",
+        "tipo": "avion cisterna",
+        "lat": -37.39481776,
+        "lon": -72.42486451,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM7",
+        "tipo": "avion cisterna",
+        "lat": -37.39477061,
+        "lon": -72.42456125,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM8",
+        "tipo": "avion cisterna",
+        "lat": -37.39492321,
+        "lon": -72.42450011,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM9",
+        "tipo": "avion cisterna",
+        "lat": -37.79729254,
+        "lon": -72.68723828,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM10",
+        "tipo": "avion cisterna",
+        "lat": -37.7974064,
+        "lon": -72.6869836,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "AM11",
+        "tipo": "avion cisterna",
+        "lat": -37.79747982,
+        "lon": -72.68716194,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 290
+    },
+    {
+        "id": "HM1",
+        "tipo": "helicoptero mediano",
+        "lat": -35.62406981,
+        "lon": -71.97986395,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "HM2",
+        "tipo": "helicoptero mediano",
+        "lat": -37.1385911,
+        "lon": -72.41369809,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "HM3",
+        "tipo": "helicoptero mediano",
+        "lat": -37.133611,
+        "lon": -72.932778,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "HM4",
+        "tipo": "helicoptero mediano",
+        "lat": -37.39223642,
+        "lon": -72.42342244,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "HM5",
+        "tipo": "helicoptero mediano",
+        "lat": -37.51367396,
+        "lon": -72.62506955,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "HM6",
+        "tipo": "helicoptero mediano",
+        "lat": -37.7592725,
+        "lon": -72.63036708,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "HM7",
+        "tipo": "helicoptero mediano",
+        "lat": -37.9403203,
+        "lon": -72.41824563,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 180
+    },
+    {
+        "id": "HM8",
+        "tipo": "helicoptero grande",
+        "lat": -37.12799315,
+        "lon": -72.41340164,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 260
+    },
+    {
+        "id": "HM9",
+        "tipo": "helicoptero grande",
+        "lat": -37.39217113,
+        "lon": -72.42340299,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 260
+    },
+    {
+        "id": "HM10",
+        "tipo": "helicoptero grande",
+        "lat": -37.79828577,
+        "lon": -72.68739614,
+        "costoTransporte": 4000,
+        "costoUso": 4000,
+        "velocidadPromedio": 260
+    },
+    {
+        "id": "CM511N",
+        "tipo": "tipo 2",
+        "lat": -37.75971462,
+        "lon": -72.62976373,
+        "costoTransporte": 35,
+        "costoUso": 14,
+        "velocidadPromedio": 60
+    }
+]

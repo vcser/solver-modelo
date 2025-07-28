@@ -1,0 +1,281 @@
+{
+    "PCH1": {
+        "helitransportada": 474,
+        "tipo 1": 395,
+        "tipo 2": 237,
+        "mecanizada": 1185,
+        "avion cisterna": 593,
+        "helicoptero mediano": 198,
+        "helicoptero grande": 790
+    },
+    "PCH2": {
+        "helitransportada": 606,
+        "tipo 1": 505,
+        "tipo 2": 303,
+        "mecanizada": 1515,
+        "avion cisterna": 758,
+        "helicoptero mediano": 253,
+        "helicoptero grande": 1010
+    },
+    "PCH3": {
+        "helitransportada": 714,
+        "tipo 1": 595,
+        "tipo 2": 357,
+        "mecanizada": 1785,
+        "avion cisterna": 893,
+        "helicoptero mediano": 298,
+        "helicoptero grande": 1190
+    },
+    "PCH4": {
+        "helitransportada": 906,
+        "tipo 1": 755,
+        "tipo 2": 453,
+        "mecanizada": 2265,
+        "avion cisterna": 1133,
+        "helicoptero mediano": 378,
+        "helicoptero grande": 1510
+    },
+    "PCH5": {
+        "helitransportada": 726,
+        "tipo 1": 605,
+        "tipo 2": 363,
+        "mecanizada": 1815,
+        "avion cisterna": 908,
+        "helicoptero mediano": 303,
+        "helicoptero grande": 1210
+    },
+    "MT01": {
+        "helitransportada": 78,
+        "tipo 1": 65,
+        "tipo 2": 39,
+        "mecanizada": 195,
+        "avion cisterna": 98,
+        "helicoptero mediano": 33,
+        "helicoptero grande": 130
+    },
+    "MT02": {
+        "helitransportada": 540,
+        "tipo 1": 450,
+        "tipo 2": 270,
+        "mecanizada": 1350,
+        "avion cisterna": 675,
+        "helicoptero mediano": 225,
+        "helicoptero grande": 900
+    },
+    "MT03": {
+        "helitransportada": 72,
+        "tipo 1": 60,
+        "tipo 2": 36,
+        "mecanizada": 180,
+        "avion cisterna": 90,
+        "helicoptero mediano": 30,
+        "helicoptero grande": 120
+    },
+    "MT04": {
+        "helitransportada": 546,
+        "tipo 1": 455,
+        "tipo 2": 273,
+        "mecanizada": 1365,
+        "avion cisterna": 683,
+        "helicoptero mediano": 228,
+        "helicoptero grande": 910
+    },
+    "MT05": {
+        "helitransportada": 282,
+        "tipo 1": 235,
+        "tipo 2": 141,
+        "mecanizada": 705,
+        "avion cisterna": 353,
+        "helicoptero mediano": 118,
+        "helicoptero grande": 470
+    },
+    "MT06": {
+        "helitransportada": 54,
+        "tipo 1": 45,
+        "tipo 2": 27,
+        "mecanizada": 135,
+        "avion cisterna": 68,
+        "helicoptero mediano": 23,
+        "helicoptero grande": 90
+    },
+    "MT07": {
+        "helitransportada": 120,
+        "tipo 1": 100,
+        "tipo 2": 60,
+        "mecanizada": 300,
+        "avion cisterna": 150,
+        "helicoptero mediano": 50,
+        "helicoptero grande": 200
+    },
+    "MT08": {
+        "helitransportada": 414,
+        "tipo 1": 345,
+        "tipo 2": 207,
+        "mecanizada": 1035,
+        "avion cisterna": 518,
+        "helicoptero mediano": 173,
+        "helicoptero grande": 690
+    },
+    "BN01": {
+        "helitransportada": 348,
+        "tipo 1": 290,
+        "tipo 2": 174,
+        "mecanizada": 870,
+        "avion cisterna": 435,
+        "helicoptero mediano": 145,
+        "helicoptero grande": 580
+    },
+    "BN02": {
+        "helitransportada": 354,
+        "tipo 1": 295,
+        "tipo 2": 177,
+        "mecanizada": 885,
+        "avion cisterna": 443,
+        "helicoptero mediano": 148,
+        "helicoptero grande": 590
+    },
+    "BN03": {
+        "helitransportada": 216,
+        "tipo 1": 180,
+        "tipo 2": 108,
+        "mecanizada": 540,
+        "avion cisterna": 270,
+        "helicoptero mediano": 90,
+        "helicoptero grande": 360
+    },
+    "BN04": {
+        "helitransportada": 324,
+        "tipo 1": 270,
+        "tipo 2": 162,
+        "mecanizada": 810,
+        "avion cisterna": 405,
+        "helicoptero mediano": 135,
+        "helicoptero grande": 540
+    },
+    "BN05": {
+        "helitransportada": 378,
+        "tipo 1": 315,
+        "tipo 2": 189,
+        "mecanizada": 945,
+        "avion cisterna": 473,
+        "helicoptero mediano": 158,
+        "helicoptero grande": 630
+    },
+    "PL01": {
+        "helitransportada": 576,
+        "tipo 1": 480,
+        "tipo 2": 288,
+        "mecanizada": 1440,
+        "avion cisterna": 720,
+        "helicoptero mediano": 240,
+        "helicoptero grande": 960
+    },
+    "PL02": {
+        "helitransportada": 270,
+        "tipo 1": 225,
+        "tipo 2": 135,
+        "mecanizada": 675,
+        "avion cisterna": 338,
+        "helicoptero mediano": 113,
+        "helicoptero grande": 450
+    },
+    "PL03": {
+        "helitransportada": 180,
+        "tipo 1": 150,
+        "tipo 2": 90,
+        "mecanizada": 450,
+        "avion cisterna": 225,
+        "helicoptero mediano": 75,
+        "helicoptero grande": 300
+    },
+    "PL04": {
+        "helitransportada": 150,
+        "tipo 1": 125,
+        "tipo 2": 75,
+        "mecanizada": 375,
+        "avion cisterna": 188,
+        "helicoptero mediano": 63,
+        "helicoptero grande": 250
+    },
+    "PL05": {
+        "helitransportada": 294,
+        "tipo 1": 245,
+        "tipo 2": 147,
+        "mecanizada": 735,
+        "avion cisterna": 368,
+        "helicoptero mediano": 123,
+        "helicoptero grande": 490
+    },
+    "PL06": {
+        "helitransportada": 366,
+        "tipo 1": 305,
+        "tipo 2": 183,
+        "mecanizada": 915,
+        "avion cisterna": 458,
+        "helicoptero mediano": 153,
+        "helicoptero grande": 610
+    },
+    "PL07": {
+        "helitransportada": 396,
+        "tipo 1": 330,
+        "tipo 2": 198,
+        "mecanizada": 990,
+        "avion cisterna": 495,
+        "helicoptero mediano": 165,
+        "helicoptero grande": 660
+    },
+    "PL08": {
+        "helitransportada": 510,
+        "tipo 1": 425,
+        "tipo 2": 255,
+        "mecanizada": 1275,
+        "avion cisterna": 638,
+        "helicoptero mediano": 213,
+        "helicoptero grande": 850
+    },
+    "PL09": {
+        "helitransportada": 306,
+        "tipo 1": 255,
+        "tipo 2": 153,
+        "mecanizada": 765,
+        "avion cisterna": 383,
+        "helicoptero mediano": 128,
+        "helicoptero grande": 510
+    },
+    "PL10": {
+        "helitransportada": 246,
+        "tipo 1": 205,
+        "tipo 2": 123,
+        "mecanizada": 615,
+        "avion cisterna": 308,
+        "helicoptero mediano": 103,
+        "helicoptero grande": 410
+    },
+    "PL11": {
+        "helitransportada": 336,
+        "tipo 1": 280,
+        "tipo 2": 168,
+        "mecanizada": 840,
+        "avion cisterna": 420,
+        "helicoptero mediano": 140,
+        "helicoptero grande": 560
+    },
+    "DX01": {
+        "helitransportada": 66,
+        "tipo 1": 55,
+        "tipo 2": 33,
+        "mecanizada": 165,
+        "avion cisterna": 83,
+        "helicoptero mediano": 28,
+        "helicoptero grande": 110
+    },
+    "DX02": {
+        "helitransportada": 78,
+        "tipo 1": 65,
+        "tipo 2": 39,
+        "mecanizada": 195,
+        "avion cisterna": 98,
+        "helicoptero mediano": 33,
+        "helicoptero grande": 130
+    }
+}

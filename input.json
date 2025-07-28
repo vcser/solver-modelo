@@ -1,0 +1,47 @@
+{
+    "timestamp": "2025-07-22T15:10:14.748Z",
+    "fire": {
+        "lat": 123,
+        "lon": 123,
+        "temperatura": 123,
+        "humedad": 123,
+        "velocidadViento": 123,
+        "pendiente": 123,
+        "modeloCombustible": 123,
+        "factorVPL": 123,
+        "valorRodalXHectarea": 123,
+        "timestamp": "2025-07-22T15:03:14.748Z"
+    },
+    "recursos": [
+        {
+            "lat": 123,
+            "lon": 123,
+            "tipo": "Helitransportada",
+            "id": "123",
+            "ETA": "2025-07-22T15:25:14.748Z",
+            "rendimiento": 123,
+            "costoTransporte": 123,
+            "costoUso": 123
+        },
+        {
+            "lat": 123,
+            "lon": 123,
+            "id": "124",
+            "tipo": "Helicoptero",
+            "ETA": "2025-07-22T15:28:14.748Z",
+            "rendimiento": 123,
+            "costoTransporte": 123,
+            "costoUso": 123
+        },
+        {
+            "lat": 123,
+            "lon": 123,
+            "id": "125",
+            "tipo": "Skidder",
+            "ETA": "2025-07-22T15:31:14.748Z",
+            "rendimiento": 123,
+            "costoTransporte": 123,
+            "costoUso": 123
+        }
+    ]
+}
