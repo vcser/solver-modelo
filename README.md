@@ -1,6 +1,17 @@
 # Recomendador de despacho
 Modelo de recomendacion basado en la metaheuristica GRASP y el modelo de prediccion kitral.
 
+## TODO
+- [X] Implementar interfaz web
+- [ ] Implementar Rest API/Graphql
+- [ ] Redefinir calculo de afinidad
+- [ ] Corregir seleccion random de recursos
+- [ ] Mejorar revision de vecindad
+- [ ] Quitar costo por hora de recursos
+- [ ] Apagar incendio iterativo: Si no se puede en 1hr probar con 2hr y asi sucesivamente hasta un limite como 6hr
+- [ ] Obtener topografia del incendio a partir de las coordenadas
+- [ ] Revisar tema de los 2 timestamps
+
 ## Tipos de recursos
 - Helitransportada
 - Tipo I
@@ -81,14 +92,3 @@ Modelo de recomendacion basado en la metaheuristica GRASP y el modelo de predicc
 | PL11   | 336              | 280    | 168     | 840        | 420            | 140                 | 560                |
 | DX01   | 66               | 55     | 33      | 165        | 83             | 28                  | 110                |
 | DX02   | 78               | 65     | 39      | 195        | 98             | 33                  | 130                |
-
-## TODO
-- [X] Implementar interfaz web
-- [ ] Implementar Rest API/Graphql
-- [ ] Redefinir calculo de afinidad
-- [ ] Corregir seleccion random de recursos
-- [ ] Mejorar revision de vecindad
-- [ ] Quitar costo por hora de recursos
-- [ ] Apagar incendio iterativo: Si no se puede en 1hr probar con 2hr y asi sucesivamente hasta un limite como 6hr
-- [ ] Obtener topografia del incendio a partir de las coordenadas
-- [ ] Revisar tema de los 2 timestamps
