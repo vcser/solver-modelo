@@ -1,0 +1,14 @@
+<div id="results">
+    <h2>Recursos Recomendados:</h2>
+    {{if .}}
+        <ul>
+            {{range .}}
+                <li>
+                    <strong>{{.ID}}</strong>
+                </li>
+            {{end}}
+        </ul>
+    {{else}}
+        <p>No fue posible generar una recomendacion.</p>
+    {{end}}
+</div>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendador de Despacho CMPC</title>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+<body>
+    <h1>Recomendador de Despacho 2.0</h1>
+
+    <form hx-post="/solve" hx-target="#results" hx-swap="innerHTML">
+        <label for="lat">Latitud:</label>
+        <input type="number" step="any" id="lat" name="lat" required placeholder="-33.4489">
+        <br>
+        <label for="lon">Longitud:</label>
+        <input type="number" step="any" id="lon" name="lon" required placeholder="-70.6693">
+        <br>
+        <button type="submit">Obtener Recomendacion</button>
+    </form>
+
+    <div id="results">
+        <p>Ingresa las coordenadas del incendio para ver recomendaciones.</p>
+    </div>
+
+    <footer>Desarrollado por Vicente Cser</footer>
+</body>
+</html>

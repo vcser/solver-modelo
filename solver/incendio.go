@@ -22,6 +22,18 @@ type Incendio struct {
 	ModeloCombustible   string    `json:"modeloCombustible"`
 }
 
+func NewIncendio(lat, lon float64, timestamp time.Time) Incendio {
+	i := Incendio{
+		Lat:          lat,
+		Lon:          lon,
+		TiempoInicio: timestamp,
+	}
+	i.CalcularMeteorologia()
+	i.CalcularTopografia()
+
+	return i
+}
+
 type meteoResponse struct {
 	Current struct {
 		Temperature float64 `json:"temperature_2m"`
@@ -58,4 +70,11 @@ func (i *Incendio) CalcularMeteorologia() {
 	i.Temperatura = meteo.Current.Temperature
 	i.Humedad = meteo.Current.Humidity
 	i.VelocidadViento = meteo.Current.WindSpeed
+}
+
+func (i *Incendio) CalcularTopografia() {
+	i.Pendiente = 1
+	i.FactorVPL = 0.02
+	i.ModeloCombustible = "PCH1"
+	i.ValorRodalXHectarea = 1000
 }
