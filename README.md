@@ -3,7 +3,7 @@ Modelo de recomendacion basado en la metaheuristica GRASP y el modelo de predicc
 
 ## TODO
 - [X] Implementar interfaz web
-- [ ] Implementar Rest API/Graphql
+- [ ] Implementar Rest/Graphql API
 - [ ] Redefinir calculo de afinidad
 - [ ] Corregir seleccion random de recursos
 - [ ] Mejorar revision de vecindad

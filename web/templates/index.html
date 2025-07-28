@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recomendador de Despacho CMPC</title>
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <body>
     <h1>Recomendador de Despacho 2.0</h1>
 
-    <form hx-post="/solve" hx-target="#results" hx-swap="innerHTML">
-        <label for="lat">Latitud:</label>
-        <input type="number" step="any" id="lat" name="lat" required placeholder="-33.4489">
-        <br>
-        <label for="lon">Longitud:</label>
-        <input type="number" step="any" id="lon" name="lon" required placeholder="-70.6693">
-        <br>
+    <form id="recommendationForm">
+        <h2>Latitud</h2>
+        -
+        <input type="number" id="latDeg" name="latDeg" min="-90" max="90" required data-next-field="latMin"
+            data-max-length="2">
+        <label for="latDeg">°</label>
+        <input type="number" id="latMin" name="latMin" min="0" max="59" required data-next-field="latSec"
+            data-max-length="2">
+        <label for="latMin">'</label>
+        <input type="number" step="any" id="latSec" name="latSec" min="0" max="59.999" required data-next-field="lonDeg"
+            data-max-length="2">
+        <label for="latSec">"</label>
+        <br><br>
+
+        <h2>Longitud</h2>
+        -
+        <input type="number" id="lonDeg" name="lonDeg" min="-180" max="180" required data-next-field="lonMin"
+            data-max-length="2">
+        <label for="lonDeg">°</label>
+        <input type="number" id="lonMin" name="lonMin" min="0" max="59" required data-next-field="lonSec"
+            data-max-length="2">
+        <label for="lonMin">'</label>
+        <input type="number" step="any" id="lonSec" name="lonSec" min="0" max="59.999" required data-max-length="2">
+        <label for="lonSec">"</label>
+        <br><br>
+
         <button type="submit">Obtener Recomendacion</button>
     </form>
 
@@ -22,6 +43,67 @@
         <p>Ingresa las coordenadas del incendio para ver recomendaciones.</p>
     </div>
 
+    <script>
+        // Función para convertir DMS a decimal
+        function dmsToDecimal(degrees, minutes, seconds) {
+            let decimal = Math.abs(degrees) + (minutes / 60) + (seconds / 3600);
+            if (degrees < 0) { // Si los grados son negativos, la coordenada es negativa
+                decimal *= -1;
+            }
+            return decimal;
+        }
+
+        // --- Lógica para el paso automático de campos ---
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', function () {
+                // Obtener la longitud máxima permitida para este campo desde el atributo data-max-length
+                const maxLength = parseInt(this.dataset.maxLength, 10);
+                // Si el valor actual del campo, convertido a cadena, tiene la longitud máxima
+                if (this.value.length === maxLength) {
+                    // Obtener el ID del siguiente campo desde el atributo data-next-field
+                    const nextFieldId = this.dataset.nextField;
+                    if (nextFieldId) {
+                        const nextField = document.getElementById(nextFieldId);
+                        if (nextField) {
+                            nextField.focus(); // Mover el foco al siguiente campo
+                        }
+                    }
+                }
+            });
+        });
+        // --- Fin de la lógica para el paso automático de campos ---
+
+
+        document.getElementById('recommendationForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evita el envío tradicional del formulario
+
+            // Obtener valores de los campos
+            const latDeg = -parseFloat(document.getElementById('latDeg').value);
+            const latMin = parseFloat(document.getElementById('latMin').value);
+            const latSec = parseFloat(document.getElementById('latSec').value);
+
+            const lonDeg = -parseFloat(document.getElementById('lonDeg').value);
+            const lonMin = parseFloat(document.getElementById('lonMin').value);
+            const lonSec = parseFloat(document.getElementById('lonSec').value);
+
+            // Convertir a decimal
+            const latitudeDecimal = dmsToDecimal(latDeg, latMin, latSec);
+            const longitudeDecimal = dmsToDecimal(lonDeg, lonMin, lonSec);
+
+            // Disparar la solicitud HTMX manualmente
+            htmx.ajax('POST', '/solve', {
+                target: '#results',
+                swap: 'innerHTML',
+                source: this, // El formulario es la fuente del evento
+                values: { // HTMX usará estos valores para el POST
+                    lat: latitudeDecimal,
+                    lon: longitudeDecimal
+                }
+            });
+        });
+    </script>
+
     <footer>Desarrollado por Vicente Cser</footer>
 </body>
+
 </html>
