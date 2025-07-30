@@ -8,6 +8,7 @@ Modelo de recomendacion basado en la metaheuristica GRASP y el modelo de predicc
 - [ ] Quitar costo por hora de recursos
 - [ ] Apagar incendio iterativo: Si no se puede en 1hr probar con 2hr y asi sucesivamente hasta un limite como 6hr
 - [ ] Cambiar funcion objetivo
+- [ ] Agregar login al sitio web
 
 ## Tipos de recursos
 - Helitransportada
