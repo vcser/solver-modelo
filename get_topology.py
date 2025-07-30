@@ -4,6 +4,11 @@ from rasterio.transform import rowcol
 
 def get_value_from_tif(tif_path, lon, lat):
     with rasterio.open(tif_path) as src:
+        print("archivo: ", tif_path)
+        print("crs: ", src.crs)
+        print("bounds: ", src.bounds)
+        print("anchura x altura: ", src.width, "x", src.height)
+        print("transform: ", src.transform)
         row, col = rowcol(src.transform, lon, lat)
         value = src.read(1)[row, col]
         return value

@@ -1,35 +1,44 @@
 {{define "form.html"}}
 <div class="flex flex-col justify-start items-center">
-    <form id="recommendationForm" hx-indicator="#loading-spinner" hx-post="/solve" hx-target="#results"
-        hx-swap="innerHTML">
-        <h2>Latitud</h2>
-        -
-        <input class="border w-20" type="number" id="latDeg" name="latDeg" min="-90" max="90" required=""
-            data-next-field="latMin" data-max-length="2">
-        <label for="latDeg">°</label>
-        <input class="border w-20" type="number" id="latMin" name="latMin" min="0" max="59" required=""
-            data-next-field="latSec" data-max-length="2">
-        <label for="latMin">'</label>
-        <input class="border w-20" type="number" step="any" id="latSec" name="latSec" min="0" max="59.999" required=""
-            data-next-field="lonDeg" data-max-length="2">
-        <label for="latSec">"</label>
-        <br><br>
+    <form class="grid grid-cols-2 grid-rows-2" id="recommendationForm" hx-indicator="#loading-spinner" hx-post="/solve"
+        hx-target="#results" hx-swap="innerHTML">
+        <div>
+            <h2>Latitud</h2>
+            -
+            <input class="border w-20" type="number" id="latDeg" name="latDeg" min="-90" max="90" required=""
+                data-next-field="latMin" data-max-length="2">
+            <label for="latDeg">°</label>
+            <input class="border w-20" type="number" id="latMin" name="latMin" min="0" max="59" required=""
+                data-next-field="latSec" data-max-length="2">
+            <label for="latMin">'</label>
+            <input class="border w-20" type="number" step="any" id="latSec" name="latSec" min="0" max="59.999"
+                required="" data-next-field="lonDeg" data-max-length="2">
+            <label for="latSec">"</label>
+            <br><br>
 
-        <h2>Longitud</h2>
-        -
-        <input class="border w-20" type="number" id="lonDeg" name="lonDeg" min="-180" max="180" required=""
-            data-next-field="lonMin" data-max-length="2">
-        <label for="lonDeg">°</label>
-        <input class="border w-20" type="number" id="lonMin" name="lonMin" min="0" max="59" required=""
-            data-next-field="lonSec" data-max-length="2">
-        <label for="lonMin">'</label>
-        <input class="border w-20" type="number" step="any" id="lonSec" name="lonSec" min="0" max="59.999" required=""
-            data-max-length="2">
-        <label for="lonSec">"</label>
-        <br><br>
+            <h2>Longitud</h2>
+            -
+            <input class="border w-20" type="number" id="lonDeg" name="lonDeg" min="-180" max="180" required=""
+                data-next-field="lonMin" data-max-length="2">
+            <label for="lonDeg">°</label>
+            <input class="border w-20" type="number" id="lonMin" name="lonMin" min="0" max="59" required=""
+                data-next-field="lonSec" data-max-length="2">
+            <label for="lonMin">'</label>
+            <input class="border w-20" type="number" step="any" id="lonSec" name="lonSec" min="0" max="59.999"
+                required="" data-max-length="2">
+            <label for="lonSec">"</label>
+            <br><br>
+        </div>
+
+        <div>
+            <h2 class="text-bold">Configuración</h2>
+            <label for="solutionTimeout">Tiempo de solución (s):</label>
+            <input class="border" type="number" id="solutionTimeout" name="solutionTimeout" value="5" max="120" required>
+            <br><br>
+        </div>
 
         <button type="submit"
-            class="px-8 py-3 w-full rounded cursor-pointer bg-green-200 hover:bg-green-300 focus:bg-green-400">Obtener
+            class="px-8 py-3 w-50% h-20 col-span-2 place-self-center rounded cursor-pointer bg-green-200 hover:bg-green-300 focus:bg-green-400">Obtener
             Recomendación</button>
     </form>
 
