@@ -6,8 +6,6 @@ import (
 	"time"
 )
 
-// var ratioElipses = [...]float64{1.5, 1.6, 1.7, 1.9, 2.0}
-
 type calculo struct {
 	Area      float64
 	Perimetro float64
@@ -40,7 +38,7 @@ func (k *Kitral) ProcesarIncendio(i Incendio) {
 
 	velocidadPropagacion := factorHumedad * factorCombustible * (factorViento + factorPendiente) * 60 * 60 / 1000
 
-	ratio := calcularRatioElipse(i.VelocidadViento, i.Pendiente) // Agregar pequeña variacion random +- 5%
+	ratio := calcularRatioElipse(i.VelocidadViento, i.Pendiente)
 
 	elipsoide := math.Sqrt(1 - 1/(ratio*ratio))
 	Ea := (velocidadPropagacion + velocidadPropagacion*(1-elipsoide)/(1+elipsoide)) / 2
