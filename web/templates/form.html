@@ -3,7 +3,7 @@
     <form class="grid grid-cols-2 grid-rows-2" id="recommendationForm" hx-indicator="#loading-spinner" hx-post="/solve"
         hx-target="#results" hx-swap="innerHTML">
         <div>
-            <h2>Latitud</h2>
+            <h2 class="font-bold">Latitud</h2>
             -
             <input class="border w-20" type="number" id="latDeg" name="latDeg" min="-90" max="90" required=""
                 data-next-field="latMin" data-max-length="2">
@@ -16,7 +16,7 @@
             <label for="latSec">"</label>
             <br><br>
 
-            <h2>Longitud</h2>
+            <h2 class="font-bold">Longitud</h2>
             -
             <input class="border w-20" type="number" id="lonDeg" name="lonDeg" min="-180" max="180" required=""
                 data-next-field="lonMin" data-max-length="2">
@@ -31,14 +31,14 @@
         </div>
 
         <div>
-            <h2 class="text-bold">Configuración</h2>
+            <h2 class="font-bold">Configuración</h2>
             <label for="solutionTimeout">Tiempo de solución (s):</label>
             <input class="border" type="number" id="solutionTimeout" name="solutionTimeout" value="5" max="120" required>
             <br><br>
         </div>
 
         <button type="submit"
-            class="px-8 py-3 w-50% h-20 col-span-2 place-self-center rounded cursor-pointer bg-green-200 hover:bg-green-300 focus:bg-green-400">Obtener
+            class="px-8 py-3 w-50% h-20 col-span-2 place-self-center rounded cursor-pointer bg-green-200 hover:bg-green-300 focus:bg-green-400 leading-1">Obtener
             Recomendación</button>
     </form>
 
@@ -58,7 +58,7 @@
 
     .spinner {
         border: 4px solid rgba(0, 0, 0, 0.1);
-        border-top: 4px solid #3498db;
+        border-top: 4px solid green;
         border-radius: 50%;
         width: 20px;
         height: 20px;

@@ -15,26 +15,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	templates.ExecuteTemplate(w, "index.html", nil)
 }
 
-// // Considerar pasar la configuracion junto con la request de /solve
-// func ConfigHandler(w http.ResponseWriter, r *http.Request) {
-// 	if r.Method != http.MethodPost {
-// 		http.Redirect(w, r, "/", http.StatusSeeOther)
-// 		return
-// 	}
-
-// 	timeoutStr := r.FormValue("solutionTimeout")
-// 	timeout, err := strconv.Atoi(timeoutStr)
-// 	if err != nil || timeout <= 0 {
-// 		http.Error(w, "Invalid timeout value", http.StatusBadRequest)
-// 		return
-// 	}
-
-// 	config.SolutionTimeout = time.Duration(timeout) * time.Second
-// 	log.Printf("Configuration updated: SolutionTimeout = %v\n", config.SolutionTimeout)
-
-// 	http.Redirect(w, r, "/", http.StatusSeeOther)
-// }
-
 func SolveHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
