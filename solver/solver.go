@@ -6,14 +6,17 @@ import (
 )
 
 type Solucion struct {
-	// asignacion de recursos
-	// metricas del incendio, costos
 	Asignacion []Recurso
 }
 
+type Config struct {
+	SolutionTimeout time.Duration
+}
+
 type Solver struct {
-	Timestamp time.Time
-	Predictor Kitral
+	Timestamp     time.Time
+	Configuration Config
+	Predictor     Kitral
 }
 
 func (s *Solver) CalcularAfinidad(r Recurso, i Incendio) float64 {
@@ -128,7 +131,7 @@ func (s *Solver) Solve(fire Incendio, r Recursos) Solucion {
 	bestFitness := s.CalcularFitness(fire, sol)
 
 	inicio := time.Now()
-	for time.Now().Before(inicio.Add(5000 * time.Millisecond)) {
+	for time.Now().Before(inicio.Add(s.Configuration.SolutionTimeout)) {
 		s.PasoBusquedaLocal(fire, r, &sol)
 		fitness := s.CalcularFitness(fire, sol)
 

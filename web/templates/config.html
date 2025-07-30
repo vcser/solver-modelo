@@ -1,0 +1,26 @@
+{{define "config.html"}}
+<div>
+    <h2 class="font-bold text-lg">Configuración</h2>
+    <form id="configForm" hx-post="/config" hx-swap="none">
+        <label for="solutionTimeout">Tiempo máximo de solución (s):</label>
+        <input class="border" type="number" id="solutionTimeout" name="solutionTimeout"
+            value="{{.SolutionTimeout.Seconds}}" max="120" required>
+        <br><br>
+
+        <button type="submit"
+            class="px-8 py-3 w-50% rounded cursor-pointer bg-green-200 hover:bg-green-300 focus:bg-green-400">Guardar
+            Configuración</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('configForm').addEventListener('htmx:afterRequest', function (event) {
+        if (event.detail.successful) {
+            alert('Configuración guardada exitosamente.');
+        } else {
+            alert('Error al guardar la configuración.');
+        }
+    });
+</script>
+
+{{end}}

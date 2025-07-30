@@ -12,8 +12,9 @@
 <body>
     <main class="h-screen flex flex-col">
         <h1 class="w-full bg-green-300 py-3 px-2">Recomendador de Despacho</h1>
-        <div class="grid grid-cols-1 grow mt-10">
+        <div class="grid grid-cols-2 grow mt-10">
             {{template "form.html"}}
+            {{template "config.html" .}}
         </div>
         <footer class="relative bottom-0 w-full text-center bg-slate-100">Desarrollado por <a class="text-blue-500" href="https://github.com/vcser" target="_blank">Vicente Cser</a></footer>
     </main>
