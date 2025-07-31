@@ -1,6 +1,7 @@
 import sys
 import rasterio
 from rasterio.transform import rowcol
+import json
 
 def get_value_from_tif(tif_path, lon, lat):
     with rasterio.open(tif_path) as src:
@@ -27,9 +28,10 @@ if __name__ == "__main__":
         pendiente = get_value_from_tif(tifPendiente, lon, lat)
         modeloCombustible = get_value_from_tif(tifModeloCombustible, lon, lat)
         result = {
-            "pendiente": pendiente,
-            "modeloCombustible": modeloCombustible
+            "pendiente": float(pendiente),
+            "modeloCombustible": float(modeloCombustible)
         }
+        print(json.dumps(result))
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(2)
