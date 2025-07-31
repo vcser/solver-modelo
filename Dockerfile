@@ -8,7 +8,7 @@ WORKDIR /app
 
 # Copia los archivos go.mod y go.sum para descargar las dependencias.
 # Esto permite que Docker cachee las dependencias si no cambian.
-COPY go.mod go.sum ./
+COPY go.mod ./
 
 # Descarga las dependencias del módulo Go.
 RUN go mod download
@@ -25,7 +25,7 @@ COPY . .
 # ./cmd/your-app-name: Reemplaza con la ruta a tu paquete principal (main.go).
 # Por ejemplo, si tu main.go está en la raíz, usa `./`.
 # Si está en `./cmd/server/main.go`, usa `./cmd/server`.
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o main ./cmd/your-app-name
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o main ./
 
 # --- Etapa de producción ---
 # Utiliza una imagen base mínima para la aplicación final.
