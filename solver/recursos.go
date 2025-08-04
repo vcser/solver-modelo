@@ -39,6 +39,18 @@ func InitializeRecursos(i Incendio) Recursos {
 	return content
 }
 
+func GetRecursos() Recursos {
+	file, err := os.Open("data/recursos.json")
+	if err != nil {
+		log.Fatalf("Error leyendo recursos: %v\n", err)
+	}
+	defer file.Close()
+	var content Recursos
+	decoder := json.NewDecoder(file)
+	decoder.Decode(&content)
+	return content
+}
+
 func (r Recursos) GetRandom(afinidades map[Recurso]float64) Recurso {
 	afinidadTotal := 0.0
 	for _, value := range afinidades {

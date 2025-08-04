@@ -12,7 +12,8 @@ import (
 var templates = template.Must(template.ParseGlob("web/templates/*.html"))
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	templates.ExecuteTemplate(w, "index.html", nil)
+	recursos := solver.GetRecursos()
+	templates.ExecuteTemplate(w, "index.html", recursos)
 }
 
 func SolveHandler(w http.ResponseWriter, r *http.Request) {
@@ -55,5 +56,12 @@ func SolveHandler(w http.ResponseWriter, r *http.Request) {
 	solucion := s.Solve(incendio, recursos)
 	log.Println("Solucion:", solucion)
 
-	templates.ExecuteTemplate(w, "results.html", solucion.Asignacion)
+	data := struct {
+		Incendio solver.Incendio
+		Solucion solver.Recursos
+	}{Incendio: incendio, Solucion: solucion.Asignacion}
+
+	log.Println("Enviando:", data)
+
+	templates.ExecuteTemplate(w, "results.html", data)
 }

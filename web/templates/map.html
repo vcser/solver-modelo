@@ -1,0 +1,117 @@
+{{define "map.html"}}
+<div class="h-full" id="map"></div>
+
+<script>
+    const map = L.map('map', {doubleClickZoom: false}).setView([-37.4707, -72.3517], 11);
+
+    const iconHelmet = L.icon({ iconUrl: 'https://static.thenounproject.com/png/helmet-icon-7994409-512.png', iconSize: [32, 32] })
+    const iconBulldozer = L.icon({ iconUrl: 'https://static.thenounproject.com/png/bulldozer-icon-4303190-512.png', iconSize: [32, 32] })
+    const iconPlane = L.icon({ iconUrl: 'https://static.thenounproject.com/png/plane-icon-7899228-512.png', iconSize: [32, 32] })
+    const iconHelicopter = L.icon({ iconUrl: 'https://static.thenounproject.com/png/helicopter-icon-5850141-512.png', iconSize: [32, 32] })
+    const iconFire = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/10760/10760660.png', iconSize: [32, 32] })
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    const markers = [
+        {{range .}}
+        { lat: {{.Lat}}, lon: {{.Lon}}, title: '{{.ID}}', type: '{{.Tipo}}' },
+        {{end}}
+    ];
+
+    markers.forEach(marker => {
+        let icon;
+        switch (marker.type) {
+            case 'helitransportada':
+            case 'tipo 1':
+            case 'tipo 2':
+                icon = iconHelmet;
+                break;
+            case 'mecanizada':
+                icon = iconBulldozer;
+                break;
+            case 'avion cisterna':
+                icon = iconPlane;
+                break;
+            case 'helicoptero mediano':
+            case 'helicoptero grande':
+                icon = iconHelicopter;
+                break;
+            default:
+                icon = L.icon({ iconUrl: 'https://static.thenounproject.com/png/marker-icon-128.png' });
+        }
+        L.marker([marker.lat, marker.lon], { title: marker.title, icon: icon }).addTo(map)
+    });
+
+    let userMarker = null;
+    let lines = [];
+    document.addEventListener('resultsUpdated', function (event) {
+        const incendio = event.detail.incendio;
+        const recursos = event.detail.recursos;
+
+        if (userMarker) {
+            map.removeLayer(userMarker);
+        }
+
+        userMarker = L.marker(incendio, { icon: iconFire }).addTo(map);
+
+        lines.forEach(line => {
+            map.removeLayer(line);
+        });
+        lines = [];
+
+        recursos.forEach(recurso => {
+            const linea = L.polyline([incendio, recurso], { color: 'red', weight: 2, dashArray: '5, 10' }).addTo(map);
+            lines.push(linea);
+        });
+
+        const bounds = L.latLngBounds([incendio, ...recursos]);
+        map.fitBounds(bounds);
+    });
+
+    function toDMS(decimal) {
+        const abs = Math.abs(decimal);
+        const deg = Math.floor(abs);
+        const min = Math.floor((abs - deg) * 60);
+        const sec = ((abs - deg - min / 60) * 3600).toFixed(0);
+        return {
+            degrees: deg,
+            minutes: min,
+            seconds: sec
+        };
+    }
+
+    map.on('dblclick', function (e) {
+        const lat = e.latlng.lat;
+        const lon = e.latlng.lng;
+
+        if (!(lat < 0 && lon < 0)) {
+            alert('Solo se permiten coordenadas en el hemisferio sur y occidental (Chile).');
+            return;
+        }
+
+        if (userMarker) {
+            map.removeLayer(userMarker);
+        }
+
+        lines.forEach(line => {
+            map.removeLayer(line);
+        });
+        lines = [];
+
+        userMarker = L.marker([lat, lon], { icon: iconFire }).addTo(map);
+
+        const latDMS = toDMS(lat);
+        const lonDMS = toDMS(lon);
+
+        document.getElementById('latDeg').value = latDMS.degrees;
+        document.getElementById('latMin').value = latDMS.minutes;
+        document.getElementById('latSec').value = latDMS.seconds;
+
+        document.getElementById('lonDeg').value = lonDMS.degrees;
+        document.getElementById('lonMin').value = lonDMS.minutes;
+        document.getElementById('lonSec').value = lonDMS.seconds;
+    });
+</script>
+{{end}}

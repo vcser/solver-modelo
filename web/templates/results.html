@@ -1,8 +1,21 @@
 <h2>Recursos Recomendados:</h2>
-{{range .}}
+{{range .Solucion}}
 <ul>
     <li>
         <strong>{{.ID}}</strong>
     </li>
 </ul>
 {{end}}
+
+<script>
+    document.dispatchEvent(new CustomEvent('resultsUpdated', {
+        detail: {
+            incendio: [{{.Incendio.Lat}}, {{.Incendio.Lon}}],
+            recursos: [
+                {{range .Solucion}}
+                [{{.Lat}}, {{.Lon}}],
+                {{end}}
+            ]
+        }
+    }));
+</script>
